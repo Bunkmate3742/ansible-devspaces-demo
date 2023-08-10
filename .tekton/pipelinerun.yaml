@@ -9,7 +9,7 @@ metadata:
     pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
 
     # The branch or tag we are targeting (ie: main, refs/tags/*)
-    pipelinesascode.tekton.dev/on-target-branch: "[devspaces-3-rhel-8]"
+    pipelinesascode.tekton.dev/on-target-branch: "[main]"
 
     pipelinesascode.tekton.dev/task: "git-clone"
 
