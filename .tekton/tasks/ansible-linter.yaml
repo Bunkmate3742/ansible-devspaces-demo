@@ -38,7 +38,9 @@ spec:
   steps:
     - name: ansible-linting
       image: $(params.image)
-      env: []
+      env: 
+        - name: HOME
+          value: /tekton/home
       resources: {}
       securityContext:
         runAsNonRoot: true
