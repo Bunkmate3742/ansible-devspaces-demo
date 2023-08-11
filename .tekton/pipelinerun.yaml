@@ -13,7 +13,7 @@ metadata:
 
     pipelinesascode.tekton.dev/task: "git-clone"
     pipelinesascode.tekton.dev/task-1: "[.tekton/tasks/ansible-linter.yaml]"
-    pipelinesascode.tekton.dev/task-2: "[yaml-lint]"
+    pipelinesascode.tekton.dev/task-2: "[.tekton/tasks/yaml-lint.yaml]"
 
     # How many runs we want to keep.
     pipelinesascode.tekton.dev/max-keep-runs: "5"
@@ -54,7 +54,7 @@ spec:
             workspace: source
         #params:
         #  - name: extra-args
-        #    value: "--nocolor --offline "
+        #    value: "--nocolor --offline -c <here ansible-lint config file if you don't use default names>"
       - name: yaml-lint
         runAfter:
           - fetch-repository        
@@ -67,7 +67,7 @@ spec:
           - name: args
             value: 
               - "-c .yamllint"
-              - "$(workspaces.shared-workspace.path)"
+              - "."
   workspaces:
   - name: source
     volumeClaimTemplate:
