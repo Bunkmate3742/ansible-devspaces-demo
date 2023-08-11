@@ -46,15 +46,12 @@ spec:
             value: $(params.revision)
       - name: ansible-linter
         runAfter:
-          - fetch-repository       
+          - fetch-repository
         taskRef:
           name: ansible-linter
         workspaces:
           - name: source
             workspace: source
-        # params:
-        #   - name: extra-args
-        #     value: "--nocolor --offline -c <here ansible-lint config file if you don't use default names>"
       - name: yaml-lint
         runAfter:
           - fetch-repository
