@@ -38,7 +38,7 @@ spec:
   steps:
     - name: ansible-linting
       image: $(params.image)
-      env: 
+      env:
         - name: HOME
           value: /tekton/home
       resources: {}
@@ -56,4 +56,4 @@ spec:
           set -x
         fi
 
-        ansible-lint $(params.extra-args) $(params.manifests-path) 
+        ansible-lint $(params.extra-args) $(params.manifests-path)

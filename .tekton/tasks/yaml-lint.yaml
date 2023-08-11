@@ -19,9 +19,9 @@ spec:
       description: A workspace that contains the fetched git repository.
   params:
     - name: args
-      type: array
+      type: string
       description: extra args needs to append
-      default: ["--help"]
+      default: "--help"
     - name: context-directory
       type: string
       description: "Context directory within the source repository in which we want to execute yaml lint."
@@ -33,11 +33,11 @@ spec:
     - name: verbose
       description: If true it will output the commands being executed in the script.
       type: string
-      default: "true"
+      default: "false"
   steps:
     - name: lint-yaml-files
       image: $(params.image)
-      env: 
+      env:
         - name: HOME
           value: /tekton/home
       resources: {}
@@ -47,13 +47,8 @@ spec:
       workingDir: $(workspaces.shared-workspace.path)/$(params.context-directory)
       script: |
         #!/usr/bin/env sh
-
-        # Force to exit if one of the command fails
         set -e
-
         if [ "$(params.verbose)" = "true" ] ; then
           set -x
         fi
-
         yamllint $(params.args)
-        
