@@ -67,7 +67,7 @@ spec:
           - name: args
             value: 
               - "-c .yamllint"
-              - "."
+              - "$(workspaces.shared-workspace.path)"
   workspaces:
   - name: source
     volumeClaimTemplate:
