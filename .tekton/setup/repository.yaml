@@ -1,0 +1,15 @@
+kind: Repository
+metadata:
+  name: ansible-devspaces-demo
+spec:
+  # Replace witht the url of your github repository
+  url: https://github.com/Nar6mes3/ansible-devspaces-demo
+  git_provider:
+    secret:
+      name: "github-webhook-config"
+      # Set this if you have a different key in your secret
+      # key: "provider.token"
+    webhook_secret:
+      name: "github-webhook-config"
+      # Set this if you have a different key for your secret
+      # key: "webhook.secret"
