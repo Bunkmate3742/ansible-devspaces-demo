@@ -51,7 +51,9 @@ spec:
         workspaces:
           - name: source
             workspace: source
-        #params:
+        params:
+          - name: extra-args
+            default: "--nocolor --offline -c .yamllint"
   workspaces:
   - name: source
     volumeClaimTemplate:
